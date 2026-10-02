@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="grad-disk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="grad-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Vinyle Fond -->
+  <circle cx="32" cy="32" r="30" fill="url(#grad-disk)" stroke="#6366f1" stroke-width="2" />
+  
+  <!-- Microsillons du disque vinyle -->
+  <circle cx="32" cy="32" r="25" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.2" stroke-dasharray="8 4 6 3" />
+  <circle cx="32" cy="32" r="20" fill="none" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+  <circle cx="32" cy="32" r="16" fill="none" stroke="rgba(255, 255, 255, 0.07)" stroke-width="0.8" />
+  
+  <!-- Macaron Central -->
+  <circle cx="32" cy="32" r="12" fill="url(#grad-accent)" />
+  <circle cx="32" cy="32" r="3.5" fill="#0f172a" stroke="#ffffff" stroke-width="1" />
+
+  <!-- Note de Musique Dorée au premier plan -->
+  <path d="M44 14 L54 11 L54 27 A 5 4 0 1 1 48 24 L48 18 L44 19 Z" fill="url(#grad-gold)" />
+</svg>

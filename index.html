@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>MemoZik 🎵 - Le Grand Blind Test & Jeu de Reconnaissance Musicale</title>
+    <meta name="title" content="MemoZik 🎵 - Le Grand Blind Test & Jeu de Reconnaissance Musicale">
+    <meta name="description" content="MemoZik est un jeu interactif de blind test musical. Écoutez des extraits au son de la platine vinyle, reconnaissez les chefs-d'œuvre classiques et pop, et trouvez le bon compositeur parmi 4 propositions !">
+    <meta name="keywords" content="MemoZik, blind test musical, quiz musique, musique classique, pop rock, deviner compositeur, beethoven, mozart, queen, daft punk, MemoFrance, MemoMonde, MemoChampi">
+    <meta name="author" content="Marc Chouteau">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0e0d26">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- Open Graph / Réseaux Sociaux -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chouteau.github.io/memozik/">
+    <meta property="og:title" content="MemoZik 🎵 - Jeu de Reconnaissance Musicale & Blind Test">
+    <meta property="og:description" content="Testez votre oreille musicale sur 20 morceaux : grands classiques, pop mythique et bandes originales cultes !">
+    <meta property="og:image" content="favicon.svg">
+    <meta property="og:site_name" content="MemoZik">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "MemoZik",
+      "description": "Jeu éducatif et ludique de blind test musical : reconnaissance auditive de chefs-d'œuvre classiques et pop sur 20 propositions.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "All",
+      "inLanguage": "fr",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+
+    <!-- Feuille de styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barre de Navigation Supérieure -->
+    <header class="navbar">
+        <a href="#" id="brand-logo" class="logo-brand" title="Retour à l'accueil MemoZik">
+            <span class="logo-icon">🎵</span>
+            <div>
+                <h1>MemoZik</h1>
+                <small>Le Grand Blind Test Musical</small>
+            </div>
+        </a>
+
+        <div class="nav-actions">
+            <button id="btn-open-musicotheque" class="btn-nav-text" title="Consulter la collection des 60 morceaux">
+                <span>📚</span>
+                <span>Musicothèque</span>
+            </button>
+            <button id="btn-toggle-sound" class="btn-icon" title="Son actif / muet">🔊</button>
+            <button id="btn-toggle-theme" class="btn-icon" title="Changer de thème (Sombre / Clair)">🌙</button>
+        </div>
+    </header>
+
+    <!-- Conteneur Principal -->
+    <main class="container">
+
+        <!-- ===================================================================
+             ÉCRAN 1 : Accueil & Configuration
+             =================================================================== -->
+        <section id="screen-setup" class="glass-card">
+            <div class="hero-banner">
+                <div class="hero-badge">🎧 Testez votre oreille & votre culture musicale</div>
+                <h2>Reconnaissez les chefs-d'œuvre de la musique</h2>
+                <p>
+                    Écoutez les mélodies interprétées au son de la platine vinyle, analysez les thèmes, 
+                    instruments et harmonies, puis identifiez le bon compositeur et titre parmi 4 propositions. 
+                    Relevez le défi et trouvez le plus de morceaux possibles sur 20 propositions !
+                </p>
+            </div>
+
+            <div class="setup-form-grid">
+                <div class="form-group">
+                    <label for="select-category">🎯 Répertoire musical :</label>
+                    <select id="select-category" class="form-control">
+                        <option value="all" selected>🌟 Tous les styles confondus (60 morceaux)</option>
+                        <option value="classical">🎻 Classique & Baroque (Beethoven, Mozart, Chopin, Vivaldi, Bach...)</option>
+                        <option value="pop_rock">🎸 Pop, Rock & Variété (Queen, Michael Jackson, ABBA, Pink Floyd...)</option>
+                        <option value="soundtrack">🎬 Cinéma, Jeux Vidéo & Culte (Pirates des Caraïbes, Mario, Tetris...)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="select-count">📊 Longueur de session :</label>
+                    <select id="select-count" class="form-control">
+                        <option value="10">10 Morceaux (Session express)</option>
+                        <option value="20" selected>20 Morceaux (Session standard - Recommandé)</option>
+                        <option value="30">30 Morceaux (Grand défi mélomane)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label class="form-check">
+                        <input type="checkbox" id="check-clues" checked>
+                        <span>Afficher l'époque et le genre comme indice léger (ex: <em>Romantisme</em>, <em>Pop Funk</em>, <em>Baroque</em>)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setup-actions">
+                <button id="btn-start-quiz" class="btn-primary">
+                    <span>🚀</span>
+                    <span>Lancer la Session (20 Morceaux)</span>
+                </button>
+                <button id="btn-open-musicotheque-setup" class="btn-secondary">
+                    <span>📖</span>
+                    <span>Explorer la Musicothèque (60 chefs-d'œuvre)</span>
+                </button>
+            </div>
+
+            <!-- Statistiques Joueur -->
+            <div class="stats-preview-card">
+                <div class="stat-box">
+                    <small>Parties Jouées</small>
+                    <strong id="stat-games-played">0</strong>
+                </div>
+                <div class="stat-box">
+                    <small>Meilleur Score</small>
+                    <strong id="stat-best-score">0 / 20</strong>
+                </div>
+                <div class="stat-box">
+                    <small>Taux de Réussite</small>
+                    <strong id="stat-success-rate">0%</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             ÉCRAN 2 : Quiz en direct (2 Colonnes)
+             =================================================================== -->
+        <section id="screen-quiz" class="hidden">
+            <!-- Barre de progression supérieure -->
+            <div class="quiz-top-bar">
+                <div class="quiz-header-meta">
+                    <span id="quiz-progress-text" class="quiz-progress-text">Morceau 1 / 20</span>
+                    <span id="quiz-score-live" class="quiz-score-badge">Score : 0</span>
+                </div>
+                <div class="progress-bar-wrap">
+                    <div id="quiz-progress-bar" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <!-- Grille de jeu : Platine Vinyle à gauche, Choix à droite -->
+            <div class="game-play-grid">
+                
+                <!-- COLONNE GAUCHE : Studio & Platine Vinyle -->
+                <div class="turntable-stage-card">
+                    <div class="clue-badge-box">
+                        <span id="clue-tag" class="clue-tag">Indice : Musique Classique • Romantisme</span>
+                    </div>
+
+                    <!-- Platine Vinyle Graphique -->
+                    <div class="turntable-deck">
+                        <div class="turntable-platter">
+                            <div id="vinyl-disc" class="vinyl-disc">
+                                <div class="vinyl-label">
+                                    <span class="vinyl-icon">🎼</span>
+                                    <span class="vinyl-text">MemoZik</span>
+                                    <div class="vinyl-center-hole"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bras de lecture (Tonearm) -->
+                        <div id="tonearm" class="tonearm">
+                            <div class="tonearm-base"></div>
+                            <div class="tonearm-rod"></div>
+                            <div class="tonearm-head"></div>
+                        </div>
+                    </div>
+
+                    <!-- Égaliseur / Barres de Spectre Réactif -->
+                    <div id="equalizer-bars" class="equalizer-container">
+                        <!-- Barres générées dynamiquement -->
+                    </div>
+
+                    <!-- Commandes Audio Intégrées -->
+                    <div class="player-controls">
+                        <div class="timeline-wrap">
+                            <span id="time-current" class="timeline-time">0:00</span>
+                            <input type="range" id="timeline-slider" class="timeline-slider" min="0" max="45" step="0.1" value="0">
+                            <span id="time-total" class="timeline-time">0:45</span>
+                        </div>
+
+                        <div class="buttons-row">
+                            <button id="btn-play-pause" class="btn-play-hero" title="Écouter ou mettre en pause (Espace)">
+                                <span id="play-icon">▶</span>
+                                <span id="play-text">Écouter</span>
+                            </button>
+
+                            <button id="btn-replay" class="btn-replay" title="Rejouer depuis le début (Touche R)">
+                                <span>↺ Rejouer</span>
+                            </button>
+
+                            <div class="volume-wrap">
+                                <span>🔊</span>
+                                <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLONNE DROITE : 4 Choix & Fiche Culturelle -->
+                <div class="glass-card quiz-panel-card">
+                    <div class="question-prompt-box">
+                        <h3>Quel est ce morceau ?</h3>
+                        <p>Identifiez le bon titre et compositeur parmi les 4 propositions (Touches 1 à 4) :</p>
+                    </div>
+
+                    <!-- 4 Boutons de propositions QCM -->
+                    <div id="options-container" class="options-grid">
+                        <!-- Généré dynamiquement via app.js -->
+                    </div>
+
+                    <!-- Fiche Culturelle révélée après choix -->
+                    <div id="educational-card" class="educational-card hidden">
+                        <div class="edu-card-header">
+                            <div class="edu-titles">
+                                <h4 id="edu-title">Lettre à Élise</h4>
+                                <em id="edu-composer">Ludwig van Beethoven</em>
+                            </div>
+                            <span id="edu-badge" class="badge-category classical">🎻 Classique</span>
+                        </div>
+
+                        <div class="edu-info-grid">
+                            <div class="edu-item">
+                                <strong>Genre / Forme</strong>
+                                <span id="edu-genre">—</span>
+                            </div>
+                            <div class="edu-item">
+                                <strong>Instrumentation</strong>
+                                <span id="edu-instrumentation">—</span>
+                            </div>
+                            <div class="edu-item">
+                                <strong>Époque & Année</strong>
+                                <span id="edu-era">—</span>
+                            </div>
+                            <div class="edu-item">
+                                <strong>Origine</strong>
+                                <span id="edu-country">—</span>
+                            </div>
+                        </div>
+
+                        <div class="edu-funfact">
+                            <strong>💡 Le saviez-vous ?</strong>
+                            <p id="edu-funfact-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Bouton Morceau Suivant -->
+                    <button id="btn-next-question" class="btn-primary hidden">
+                        <span>Morceau Suivant</span>
+                        <span>➔</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             ÉCRAN 3 : Bilan de Fin de Session
+             =================================================================== -->
+        <section id="screen-bilan" class="glass-card hidden">
+            <div class="bilan-header">
+                <h2>🎉 Bilan de votre Session</h2>
+
+                <div class="bilan-score-row">
+                    <div class="bilan-metric-card">
+                        <div id="bilan-score-raw" class="number">18 / 20</div>
+                        <small>Bonnes Réponses</small>
+                    </div>
+                    <div class="bilan-metric-card">
+                        <div id="bilan-score-percent" class="number">90%</div>
+                        <small>Taux de Réussite</small>
+                    </div>
+                    <div class="bilan-metric-card">
+                        <div id="bilan-time" class="number">2 min 14 s</div>
+                        <small>Temps Écoulé</small>
+                    </div>
+                </div>
+
+                <div id="bilan-rank-badge" class="rank-badge rank-virtuoso">
+                    🏆 Virtuose Musical
+                </div>
+                <p id="bilan-rank-comment" class="rank-comment">
+                    Une oreille absolue remarquable ! Vous possédez une vaste culture musicale couvrant tous les répertoires.
+                </p>
+            </div>
+
+            <!-- Liste détaillée des 20 morceaux joués pour réécoute et révision -->
+            <div class="bilan-review-section">
+                <h3><span>📊</span> Récapitulatif des 20 morceaux joués</h3>
+                <p class="subtext">Réécoutez n'importe quel extrait ou consultez son anecdote historique :</p>
+                
+                <div id="bilan-review-list" class="review-list">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+
+            <div class="bilan-actions">
+                <button id="btn-restart-quiz" class="btn-primary">
+                    <span>🔄</span>
+                    <span>Rejouer une Session</span>
+                </button>
+                <button id="btn-open-musicotheque-bilan" class="btn-secondary">
+                    <span>📚</span>
+                    <span>Consulter la Musicothèque</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================================================
+         MODALE : La Musicothèque (Encyclopédie des 60 morceaux)
+         =================================================================== -->
+    <div id="modal-musicotheque" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><span>📚</span> La Musicothèque (60 Chefs-d'œuvre)</h3>
+                <button id="btn-close-modal" class="modal-close-btn" title="Fermer la modale">&times;</button>
+            </div>
+
+            <div class="modal-toolbar">
+                <div class="search-input-wrap">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-music" class="search-input" placeholder="Rechercher par titre, compositeur, style, année...">
+                </div>
+
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-filter="all">Tous (60)</button>
+                    <button class="filter-pill" data-filter="classical">Classique (25)</button>
+                    <button class="filter-pill" data-filter="pop_rock">Pop & Rock (25)</button>
+                    <button class="filter-pill" data-filter="soundtrack">Cinéma & Jeux (10)</button>
+                </div>
+            </div>
+
+            <div id="musicotheque-list" class="modal-body">
+                <!-- Rempli dynamiquement avec les cartes musicales -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de l'application -->
+    <script src="tracks.js"></script>
+    <script src="sound.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
