@@ -1,5 +1,9 @@
 # MemoZik 🎵 — Le Grand Blind Test Musical
 
+<p align="center">
+  <img src="og-image.png" alt="MemoZik Social Preview" width="100%" style="border-radius: 12px; max-width: 900px;" />
+</p>
+
 > **MemoZik** est un jeu interactif et éducatif de mémoire auditive et de reconnaissance musicale (blind test), conçu dans le même esprit que **MemoFrance**, **MemoMonde** et **MemoChampi**.
 
 🎮 **Jouer en ligne directement :** [https://chouteau.github.io/memozik/](https://chouteau.github.io/memozik/)
